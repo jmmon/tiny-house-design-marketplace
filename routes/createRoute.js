@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Design = require('../models/design');
+const User = require('../models/user');
 
 router.route("/").post((req, res) => {
     console.log('create router working');
@@ -11,25 +12,26 @@ router.route("/").post((req, res) => {
     const length = req.body.length;
     const width = req.body.width;
     const height = req.body.height;
-    const creator;
+
+    // const creator = req.body.creator;
 
     const newDesign = new Design({
-        name,
-        imageUrl,
-        description,
-        length,
-        width,
-        height,
-        creator,
-    })
+        name: name,
+        imageUrl: imageUrl,
+        description: description,
+        length: length,
+        width: width,
+        height: height,
+        // creator,
+    });
 
     newDesign.save()
-    .then(() => {
-        res.send(200);
+    .then((design) => {
+        res.send(200).json(design);
     })
     .catch(err => {
         console.log(err);
-        res.send(500);
+        res.sendStatus(500);
     });
 });
 

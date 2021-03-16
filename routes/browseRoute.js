@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 const Design = require('../models/design');
 
-router.route('/:id').get((req, res) => {
-    console.log('GET design router working')
+router.route('/').get((req, res) => {
+    console.log('GET browse router working')
 
-    Design.find({_id: req.params.id})
-    .then(design => {
-        res.json(design);
-        console.log('~design found', design);
+    Design.find()
+    .then(designs => {
+        res.json(designs);
+        console.log('~all designs', designs);
     })
     .catch(err => {
         res.send(500);
