@@ -3,7 +3,7 @@ const router = express.Router();
 const Design = require('../models/design');
 
 router.route('/:id').get((req, res) => {
-    console.log('GET design router working')
+    console.log('GET design router working');
 
     Design.find({_id: req.params.id})
     .then(design => {

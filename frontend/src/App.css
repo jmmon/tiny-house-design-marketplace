@@ -56,9 +56,9 @@
     border-right: 1px solid black;
     position: fixed;
     display: inline-block;
-    z-index: 1;
     margin-top: 3rem;
     left: 0;
+    margin-bottom: 2.5rem;
 }
 
 .App-sidebar h3 {
@@ -77,19 +77,24 @@
     display: inline-block;
     right: 0;
     margin-left: 12rem;
+    width: 100%;
+}
+
+.container h1 {
+    text-align: center;
 }
 
 /* Footer */
 .App-footer {
-    height: 5vh;
+    height: r.5rem;
     width: 100%;
     background-color: #437ba0;
     align-items: center;
     padding-left: 2rem;
     display: flex;
     color: #e7e7e7;
-    /* bottom: 0;
-    position: fixed; */
+    bottom: 0;
+    position: fixed;
 }
 
 /* Form */
@@ -114,4 +119,29 @@ textarea {
     padding: 12px 20px 12px 12px;
     border-radius: 0 4px 4px 4px;
     margin: 8px 0 2em;
+}
+
+.browse-design {
+    width: 40%;
+    padding: 2%;
+    margin: 2%;
+    display: inline-block;
+    border: 1px darkgray solid;
+}
+
+.browse-design h3 {
+    text-align: center;
+}
+.browse-design img {
+    width: 60%;
+    height: auto;
+    display: inline-block;
+    top: 0;
+}
+.browse-design ul {
+    display: inline-block;
+}
+
+.browse-design .btn {
+    align-content: center;
 }

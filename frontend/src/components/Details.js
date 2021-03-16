@@ -4,7 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 const Details = () => {
     const { id } = useParams();
 
-    const { data: design, isPending, error } = useFetch('http://localhost:3037/api/details/'+id);
+    const { data: design, isPending, error } = useFetch('/api/details/'+id);
     const history = useHistory();
     console.log('fetched design', design);
 
@@ -18,13 +18,12 @@ const Details = () => {
     };
 
     return ( 
-        <div className="design-details">
-            <h2>Design Details - { id }</h2>
+        <div className="container">
+            {design && <h1>Design Details - { design[0].name }</h1>}
             {error && <div>{ error }</div>}
             {isPending && <div>Loading...</div>}
             {design && (
-
-                <article>
+                <article class="design-details">
                     <h3>{design[0].name}</h3>
                     <h4>{design[0].creator}</h4>
                     <p>{design[0].imageUrl}</p>

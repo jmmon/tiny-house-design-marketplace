@@ -38,12 +38,14 @@ const Browse = () => {
             <div class="browse-design">
                 <h3>{design.name}</h3>
                 <h4>{design.creator}</h4>
-                <p>{design.imageUrl}</p>
+                <img src={design.imageUrl} />
+                <ul>
+                    <li>{design.length}</li>
+                    <li>{design.width}</li>
+                    <li>{design.height}</li>
+                </ul>
                 <p>{design.description}</p>
-                <p>{design.length}</p>
-                <p>{design.width}</p>
-                <p>{design.height}</p>
-                <Link to={`/details/${design._id}`}>Details</Link>
+                <Link className="btn" to={`/details/${design._id}`}>Details</Link>
             </div>
         )
     })
