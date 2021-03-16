@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { Link } from "react-router-dom";
 
 const Browse = () => {
     const [designs, setDesigns] = useState([{
@@ -42,6 +43,7 @@ const Browse = () => {
                 <p>{design.length}</p>
                 <p>{design.width}</p>
                 <p>{design.height}</p>
+                <Link to={`/details/${design._id}`}>Details</Link>
             </div>
         )
     })
