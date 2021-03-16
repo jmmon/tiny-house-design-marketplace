@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({user}) => {
     return ( 
         <nav className="App-header">
             <Link to="/">
@@ -8,8 +8,9 @@ const Navbar = () => {
             </Link>
             
             <ul>
-                <li><Link to="/login">Login</Link></li>
-                <li><Link to="/register">Register</Link></li>
+                {!user &&<li><Link to="/login">Login</Link></li>}
+                {!user &&<li><Link to="/register">Register</Link></li>}
+                {user &&<li><Link to="/logout">Logout</Link></li>}
             </ul>
         </nav>
      );

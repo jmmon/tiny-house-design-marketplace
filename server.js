@@ -46,6 +46,7 @@ app.use(passport.session());
 //routes
 app.use('/', require('./routes/noteRoute'));
 app.use('/api/register', require('./routes/registerRoute'));
+app.use('/api/login', require('./routes/loginRoute'));
 
 // passport config
 passport.use(new LocalStrategy(User.authenticate()));
