@@ -13,6 +13,7 @@ import Login from './components/Login';
 import About from './components/About';
 import Contact from './components/Contact';
 import Browse from './components/Browse';
+import Create from './components/Create';
 import {useState} from "react";
 
 function App() {
@@ -22,8 +23,8 @@ function App() {
         <div className="App">
             <Router>
                 <Navbar user={user}/>
+                <Sidebar />
                 <div className="Content">
-                    <Sidebar />
                     <Switch>
                         <Route exact path="/">
                             <Welcome />
@@ -42,6 +43,9 @@ function App() {
                         </Route>
                         <Route path="/browse">
                             <Browse />
+                        </Route>
+                        <Route path="/create">
+                            <Create />
                         </Route>
                     </Switch>
                 </div>

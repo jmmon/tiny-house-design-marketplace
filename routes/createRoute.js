@@ -27,7 +27,8 @@ router.route("/").post((req, res) => {
 
     newDesign.save()
     .then((design) => {
-        res.send(200).json(design);
+        console.log('new saved design', design);
+        res.json(design);
     })
     .catch(err => {
         console.log(err);
