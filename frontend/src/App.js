@@ -13,6 +13,7 @@ import Login from './components/Login';
 import About from './components/About';
 import Contact from './components/Contact';
 import Browse from './components/Browse';
+import Details from './components/Details';
 import Create from './components/Create';
 import {useState} from "react";
 
@@ -46,6 +47,9 @@ function App() {
                         </Route>
                         <Route path="/create">
                             <Create />
+                        </Route>
+                        <Route path="/details/:id">
+                            <Details />
                         </Route>
                     </Switch>
                 </div>
