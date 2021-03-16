@@ -13,12 +13,15 @@ import Login from './components/Login';
 import About from './components/About';
 import Contact from './components/Contact';
 import Browse from './components/Browse';
+import {useState} from "react";
 
 function App() {
+    const [user, setUser] = useState();
+
     return (
         <div className="App">
             <Router>
-                <Navbar />
+                <Navbar user={user}/>
                 <div className="Content">
                     <Sidebar />
                     <Switch>
@@ -26,7 +29,7 @@ function App() {
                             <Welcome />
                         </Route>
                         <Route path="/login">
-                            <Login />
+                            <Login setUser={setUser}/>
                         </Route>
                         <Route path="/register">
                             <Register />
