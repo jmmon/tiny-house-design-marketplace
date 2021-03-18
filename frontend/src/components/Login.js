@@ -39,7 +39,8 @@ const Login = ({setUser}) => {
             headers: {"Content-type": "application/json; charset=UTF-8"},
             body: JSON.stringify(userCredentials)
         })
-        .then(() => {
+        .then((response) => {
+            console.log('response', response);
             console.log('logged in as', userCredentials);
             setIsPending(false);
             setUser(input.email);

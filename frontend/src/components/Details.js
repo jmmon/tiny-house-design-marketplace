@@ -1,5 +1,5 @@
 import useFetch from "./hooks/useFetch";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 
 const Details = () => {
     const { id } = useParams();
@@ -19,18 +19,19 @@ const Details = () => {
 
     return ( 
         <div className="container">
-            {design && <h1>Design Details - { design[0].name }</h1>}
+            {design && <h1>Design Details - { design.name }</h1>}
             {error && <div>{ error }</div>}
             {isPending && <div>Loading...</div>}
             {design && (
                 <article class="design-details">
-                    <h3>{design[0].name}</h3>
-                    <h4>{design[0].creator}</h4>
-                    <p>{design[0].imageUrl}</p>
-                    <p>{design[0].description}</p>
-                    <p>{design[0].length}</p>
-                    <p>{design[0].width}</p>
-                    <p>{design[0].height}</p>
+                    <h3>{design.name}</h3>
+                    <h4>{design.creator}</h4>
+                    <p>{design.imageUrl}</p>
+                    <p>{design.description}</p>
+                    <p>{design.length}</p>
+                    <p>{design.width}</p>
+                    <p>{design.height}</p>
+                    <Link to="/browse"><button>Back</button></Link>
                     <button onClick={handleDelete}>Delete</button>
                 </article>
             )}

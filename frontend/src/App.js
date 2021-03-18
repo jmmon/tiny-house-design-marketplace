@@ -4,6 +4,10 @@ import {
     Switch,
     Route,
   } from "react-router-dom";
+
+
+
+// import Auth from './components/Auth/Auth';
 import Navbar from './components/parts/Navbar';
 import Footer from './components/parts/Footer';
 import Sidebar from './components/parts/Sidebar';
