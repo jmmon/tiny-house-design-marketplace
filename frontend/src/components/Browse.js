@@ -15,7 +15,7 @@ const Browse = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch("/api/browse")
+        fetch("/api/designs/")
         .then(res => {
             if (res.ok) {
                 return res.json();

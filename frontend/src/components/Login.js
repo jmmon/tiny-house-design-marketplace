@@ -5,7 +5,7 @@ const Login = ({setUser}) => {
     const history = useHistory();
 
     const [input, setInput] = useState({
-        username: "",
+        email: "",
         password: "",
     });
 
@@ -26,7 +26,7 @@ const Login = ({setUser}) => {
         event.preventDefault();
 
         const userCredentials = {
-            username: input.username,
+            email: input.email,
             password: input.password,
         };
 
@@ -34,7 +34,7 @@ const Login = ({setUser}) => {
 
         setIsPending(true);
 
-        fetch('http://localhost:3037/api/login', {
+        fetch('/api/users/login', {
             method: 'POST',
             headers: {"Content-type": "application/json; charset=UTF-8"},
             body: JSON.stringify(userCredentials)
@@ -42,7 +42,7 @@ const Login = ({setUser}) => {
         .then(() => {
             console.log('logged in as', userCredentials);
             setIsPending(false);
-            setUser(input.username);
+            setUser(input.email);
             history.push('/');
         })
         .catch(err => {
@@ -55,8 +55,8 @@ const Login = ({setUser}) => {
         <div>
             <h2>Login To Your Account</h2>
             <form id="login-form">
-                <label htmlFor="username">Username</label>
-                <input onChange={handleChange} value={input.username} id="username" name="username" type="text" />
+                <label htmlFor="email">Email</label>
+                <input onChange={handleChange} value={input.email} id="email" name="email" type="text" />
                 <label htmlFor="password">Password</label>
                 <input onChange={handleChange} value={input.password} id="password" name="password" type="password" />
                 { !isPending &&<button onClick={handleSubmit}>Login</button> }

@@ -6,7 +6,7 @@ const Register = () => {
     const history = useHistory();
 
     const [input, setInput] = useState({
-        username: "",
+        email: "",
         password: "",
         repeatPassword: ""
     });
@@ -28,7 +28,7 @@ const Register = () => {
         event.preventDefault();
 
         const newUser = {
-            username: input.username,
+            email: input.email,
             password: input.password,
             repeatPassword: input.repeatPassword
         };
@@ -37,7 +37,7 @@ const Register = () => {
 
         setIsPending(true);
 
-        fetch('http://localhost:3037/api/register', {
+        fetch('/api/users/register', {
             method: 'POST',
             headers: {"Content-type": "application/json; charset=UTF-8"},
             body: JSON.stringify(newUser)
@@ -57,8 +57,8 @@ const Register = () => {
         <div>
             <h2>Register a user</h2>
             <form id="register-form">
-                <label htmlFor="username">Username</label>
-                <input onChange={handleChange} value={input.username} id="username" name="username" type="text" required minLength="5" />
+                <label htmlFor="email">Email</label>
+                <input onChange={handleChange} value={input.email} id="email" name="email" type="text" required minLength="5" />
                 <label htmlFor="password">Password</label>
                 <input onChange={handleChange} value={input.password} id="password" name="password" type="password" required minLength="5" />
                 <label htmlFor="repeatPassword">Repeat Password</label>

@@ -44,12 +44,13 @@ const Create = () => {
 
         setIsPending(true);
 
-        fetch('http://localhost:3037/api/create', {
+        fetch('/api/designs/create', {
             method: 'POST',
             headers: {"Content-type": "application/json; charset=UTF-8"},
             body: JSON.stringify(newDesign)
         })
         .then(res => {
+            console.log('res.ok', res.ok)
             if (res.ok) {
                 return res.json();
             }

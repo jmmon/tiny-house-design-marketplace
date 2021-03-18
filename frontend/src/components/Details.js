@@ -4,12 +4,12 @@ import { useParams, useHistory } from "react-router-dom";
 const Details = () => {
     const { id } = useParams();
 
-    const { data: design, isPending, error } = useFetch('/api/details/'+id);
+    const { data: design, isPending, error } = useFetch('/api/designs/'+id);
     const history = useHistory();
     console.log('fetched design', design);
 
     const handleDelete = () => {
-        fetch('/api/details/' + id, {   //TODO
+        fetch('/api/designs/' + id, {   //TODO
             method: "DELETE"
         })
         .then(() => {
