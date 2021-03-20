@@ -49,6 +49,7 @@ router.route('/register').post((req, res) => {
 
 router.route('/login').post((req, res, next) => {
     let fetchedUser;
+    console.log('~req.body', req.body)
 
     User.findOne({email: req.body.email})
     .then(user => {
@@ -65,7 +66,7 @@ router.route('/login').post((req, res, next) => {
         if (!result) {
             return res.status(401).json({
                 message: "Auth failed, incorrect password!"
-            })
+            });
         }
         const token = jwt.sign(
             { email: fetchedUser.email, userId: fetchedUser._id },

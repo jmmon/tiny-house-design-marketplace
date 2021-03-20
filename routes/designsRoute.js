@@ -6,8 +6,8 @@ const checkAuth = require('../middlewares/check-auth');
 const Design = require('../models/design');
 const User = require('../models/user');
 
-
-router.post("/create", checkAuth, (req, res) => {
+// checkAuth,
+router.post("/create", (req, res) => {
     console.log('create router working');
 
     // const creator = req.body.creator;
@@ -19,7 +19,7 @@ router.post("/create", checkAuth, (req, res) => {
         length: req.body.length,
         width: req.body.width,
         height: req.body.height,
-        creator: req.userData.userId,
+        //creator: req.userData.userId,
     });
 
     newDesign.save()
@@ -39,12 +39,9 @@ router.post("/create", checkAuth, (req, res) => {
 router.route('/:id').get((req, res) => {
     console.log('GET design router working');
 
-    Design.find({_id: req.params.id})
+    Design.findById(req.params.id)
     .then(design => {
-        res.status(200).json({
-            message: "Found design",
-            design: design
-        });
+        res.status(200).json(design);
         console.log('~design found', design);
     })
     .catch(err => {

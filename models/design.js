@@ -52,7 +52,7 @@ const designSchema = new Schema({
     //     required: [true, 'Please enter number of bathrooms.']
     // },
     
-    // creator: { type: Schema.Types.ObjectId, ref: 'User'}
+    creator: { type: Schema.Types.ObjectId, ref: 'User'}
 });
 
 const Design = mongoose.model("Design", designSchema);

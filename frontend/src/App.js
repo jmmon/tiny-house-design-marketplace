@@ -3,11 +3,10 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
+    Redirect,
   } from "react-router-dom";
+import {useState, useCallback, useEffect} from "react";
 
-
-
-// import Auth from './components/Auth/Auth';
 import Navbar from './components/parts/Navbar';
 import Footer from './components/parts/Footer';
 import Sidebar from './components/parts/Sidebar';
@@ -19,10 +18,42 @@ import Contact from './components/Contact';
 import Browse from './components/Browse';
 import Details from './components/Details';
 import Create from './components/Create';
-import {useState} from "react";
 
-function App() {
-    const [user, setUser] = useState();
+import axios from "axios";
+import Auth from './components/Auth/Auth';
+import {AuthContext} from "./context/auth-context";
+
+import Spinner from "./Containers/Spinner/Spinner";
+
+let logoutTimer;
+
+function App(props) {
+    const [token, setToken] = useState(false);
+    const [tokenExpirationDate, setTokenExpirationDate] = useState();
+    const [userId, setUserId] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    //const [user, setUser] = useState();
+
+    const login = useCallback((uid, token, expirationDate) => {
+        setToken(token);
+        setUserId(uid);
+        setIsLoading(false);
+        const tokenExpirationDate = expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
+        setTokenExpirationDate(expirationDate);
+        localStorage.setItem(
+            'userData',
+            JSON.stringify({
+                userId: uid,
+                token: token,
+                expiration: tokenExpirationDate.toISOString()
+            })
+        );
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }, []);
+
+    const logout = useCallback(() => {
+        setToken(null);
+    })
 
     return (
         <div className="App">
