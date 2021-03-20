@@ -37,10 +37,10 @@ const Create = () => {
             length: input.length,
             width: input.width,
             height: input.height,
-            // creator,
+            //creator: req.user,
         };
 
-        console.log('new user', newDesign);
+        console.log('new design (inputs from form)', newDesign);
 
         setIsPending(true);
 
@@ -49,10 +49,15 @@ const Create = () => {
             headers: {"Content-type": "application/json; charset=UTF-8"},
             body: JSON.stringify(newDesign)
         })
-        .then(() => {
-            console.log('new design posted', newDesign);
+        .then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+        .then((jsonRes) => {
+            console.log('new design posted', jsonRes);
             setIsPending(false);
-            history.push('/');
+            history.push('/details/'+jsonRes._id);
         })
         .catch(err => {
             console.log(err);
@@ -74,13 +79,13 @@ const Create = () => {
                 <textarea onChange={handleChange} id="description" name="description" required>{input.description}</textarea>
 
                 <label htmlFor="length">Length of Trailer</label>
-                <input onChange={handleChange} value={input.length} id="length" name="length" type="text" required />
+                <input onChange={handleChange} value={input.length} id="length" name="length" type="number" min="0" required />
 
                 <label htmlFor="width">Width at Widest Point</label>
-                <input onChange={handleChange} value={input.width} id="width" name="width" type="text" required />
+                <input onChange={handleChange} value={input.width} id="width" name="width" type="number" min="0" required />
 
                 <label htmlFor="height">Height at Tallest Point</label>
-                <input onChange={handleChange} value={input.height} id="height" name="height" type="text" required />
+                <input onChange={handleChange} value={input.height} id="height" name="height" type="number" min="0" required />
 
                 { }
                 { !isPending &&<button onClick={handleSubmit}>Submit Design</button> }

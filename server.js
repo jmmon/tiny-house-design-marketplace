@@ -46,7 +46,8 @@ app.use(passport.session());
 //routes
 app.use('/api/register', require('./routes/registerRoute'));
 app.use('/api/login', require('./routes/loginRoute'));
-app.use('/api/design', require('./routes/designRoute'));
+app.use('/api/details', require('./routes/detailsRoute'));
+app.use('/api/browse', require('./routes/browseRoute'));
 
 //(protected)
 app.use('/api/create', require('./routes/createRoute'));
